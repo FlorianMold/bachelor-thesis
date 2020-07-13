@@ -1,0 +1,512 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Ergebnisse}\label{sec:results}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Dieser Teil der Arbeit beschäftigt sich mit den Ergebnissen der realisierten Applikation. Zuerst wird auf die einzelnen Iterationen eingegangen, die das Projekt während der Entstehung durchlaufen hat.
+Die Entwicklung erfolgt iterativ, damit auf Änderungen der Anforderungen sofort reagiert werden kann und nicht am eigentlichen Ziel vorbei entwickelt wird. Zudem werden die Ergebnisse des Fragebogens evaluiert. Des Weiteren wird noch auf den Usability Aspekt der Applikation eingegangen. Daraufhin werden verschiedene Aspekte der theoretischen sowie praktischen Entwicklung näher beleuchtet.
+
+\section{Iteration 1: Planung}\label{sec:iteration1}
+In der Planungsphase wurden Therapeut/innen und Patient/innen gesucht, die sich bereit erklärten, an der Entwicklung der Applikation mitzuwirken. Das LK Allentsteig zeigte sich bereit, an der Entstehung der Applikation mitzuwirken. Um einen Einblick in den Therapiealltag zu erhalten und sich ein besseres Bild über die Behandlungsmöglichkeiten zu machen, wurde eine Führung durch das Haus vereinbart. Die Leitung stellte einen umfangreichen Zeitplan zusammen, der alle Stationen des Hauses umfasste. Zuerst fand ein Gespräch mit den leitenden Ärzt/innen statt, um etwaige Formalitäten für die Arbeit zu klären. Die Führung umfasste Einblicke in die Bereiche der Logopädie, Ergotherapie, Motorik und Neuropsychologie. Die Therapierenden legten ihre unterschiedlichen Behandlungsansätze offen. Das Personal beanstandete einen Mangel an exekutiven Serious-Games, welche geistige Funktionen trainieren. Das Therapiezentrum ist mit allerlei technischen Geräten ausgestattet, die während der Therapien intensiv genutzt werden. Die Ausrüstung umfasst Equipment, das ausschließlich für eine Behandlung (\href{https://www.hocoma.com/de/losungen/armeo-spring/}{Armeo}, \href{https://www.amadeosystems.com/de/}{Amadeo}) geschaffen wurde, bis hin zu alltäglichen Geräten, wie Android Tablets. Das LK Allentsteig versicherte, dass bald weitere Tablets angeschafft werden. Nach dem Besuch im Therapiezentrum wurde ein grobes Konzept für die Anwendung ausgearbeitet. Dadurch, dass mobile Geräte während der Therapie stark vertreten sind, fiel die Entscheidung auf eine Android-App. In der Planung wurde berücksichtigt, wie sinnvoll die Methode für die Patient/innen ist und wie das Spiel den Behandelten helfen kann, besser mit ihren Krankheiten umzugehen. Dabei wurde versucht, dass gängige Behandlungsmethoden in Form eines Serious-Games widergespiegelt werden. Nachdem die ersten Konzepte für die Applikation festgelegt waren, folgte der Übergang in die Entwurfsphase. Es wurden Mockups entworfen, die die Funktionsweise der Applikation abstrakt und verständlich darstellen sollten. Die Entwürfe wurden speziell auf die Größe eines durchschnittlichen Tablet-Displays angepasst. Das finale Serious-Game soll auf den Android-Tablets des Therapiezentrums zum Einsatz kommen. Diese elektronischen Geräte bieten eine Menge von Vorteilen für den Therapiealltag. Einerseits handelt es sich nicht um Spezialhardware, die extrem teuer und schwer zu warten ist. Andererseits bieten die Geräte eine sehr intuitive Bedienoberfläche und eine Vielzahl an Eingabemöglichkeiten. Außerdem sind Tablets sehr leicht zu transportieren. Patient/innen, die so ein Gerät besitzen, können ohne Probleme zu Hause weiterspielen. Therapeut/innen können die Statistiken ihrer Behandelten trotzdem weiter verfolgen und überprüfen. Die Spielidee wurde dem LK Allentsteig präsentiert, welches dem Entwurf und dem theoretischen Konzept zustimmte. Mithilfe der Mockups und der Modellierungssprache \ac{UML} wurden Diagramme (Klassendiagramme, Aktivitätsdiagramme, Zustandsdiagramme, Sequenzdiagramme, \dots) entworfen, welche eingesetzt werden, damit die Funktionen für jede/n nachvollziehbar festgehalten werden. Diese Diagramme werden angewandt, um die spätere Entwicklung zu erleichtern. Ähnlich wie Klassendiagramme für die Planung des Aufbaus der Software eingesetzt werden, werden \ac{ER} Diagramme für die Datenbankmodellierung verwendet. Die Datenbankschicht wird verwendet, um therapierelevante Daten persistent abzuspeichern. Diese Daten können später von den Therapierenden benutzt werden, um den Therapieerfolg zu messen. Die Applikation setzt auf eine Client-Server Architektur, in der der Client keinerlei Daten speichert, sondern für die Anzeige zuständig ist. Nachdem das grobe Konzept erstellt und freigegeben wurde, wechselte die Entwicklung in die nächste Iteration. In der Tabelle \ref{tab:serious-game-iteration} sind die Teilnehmer/innen der ersten Iteration aufgelistet.
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|l|} 
+        \hline
+        \rowcolor[rgb]{0.851,0.851,0.851} \textbf{Beruf} & \rowcolor[rgb]{0.851,0.851,0.851} \textbf{Alter} & \rowcolor[rgb]{0.851,0.851,0.851} \textbf{Geschlecht}  \\ 
+        \hline
+        Ergotherapeutin & 25 & weiblich    \\ 
+        \hline
+        Ergotherapeutin & 27 & weiblich    \\ 
+        \hline
+        Ergotherapeutin & 31 & weiblich    \\ 
+        \hline
+        Psychologin & 40 & weiblich    \\ 
+        \hline
+        Primar & 51 & männlich     \\ 
+        \hline
+        Univ.-Prof & 56 & weiblich     \\ 
+        \hline
+        \textbf{Durchschnitt}  & \textbf{38}  & -            \\
+        \hline
+    \end{tabular}
+    \caption{Teilnehmer/innen Iteration 1}
+	\label{tab:serious-game-iteration}
+\end{table}
+
+\subsection{Spielidee}
+
+Dieses Unterkapitel erläutert die grundsätzliche Spielidee, die nach dem Besuch im LK Allentsteig in Zusammenarbeit mit den Therapeut/innen und der Leitung ausgearbeitet wurde. Die Konzepte werden mit Mockups, die zu Beginn erarbeitet wurden, weiter verdeutlicht.
+
+\subsubsection{Allgemein}
+
+Grundsätzlich teilt sich das Spiel in eine Patient/innen- und Therapeut/innen-ansicht. Beim Registrierungsprozess kann festgelegt werden, welche Rolle der/die erstellte Benutzer/in später einnimmt. Accounts von Therapierenden müssen zuerst von einem/einer Administrator/in bestätigt werden. Der/Die Administrator/in ist ein/e Therapeut/in mit erweiterten Rechten, wie dem Freischalten von neuen Accounts. Es kann immer nur ein Admin existieren, der zu Beginn festgelegt wird. Therapeut/innen können nicht am Spiel teilnehmen, sondern nur die Statistiken der Patient/innen einsehen.
+
+Das Spiel zielt auf das Training der exekutiven Funktionen der Patient/innen ab. In wenigen Worten zusammengefasst muss sich der/die Spieler/in die Zutaten eines Rezepts einprägen und danach in unterschiedlichen Abschnitten korrekt wiedergeben.
+
+Die Applikation besteht aus vier Abschnitten, die aufeinander aufbauen. Zum Start des Spiels wird dem/der Patient/in der Ablauf kurz erklärt, um den Einstieg zu erleichtern. Diese Beschreibung des groben Spielablaufs wird pro neuem Spiel wieder angezeigt, jedoch kann der/die Patient/in, die Meldung mit einer Einstellung permanent ausblenden. Falls der/die Spieler/in Probleme hat, weil der Ablauf nicht klar ist, befinden sich in jedem Spielabschnitt Hilfetexte, die erklären, was zu tun ist. Bei jedem Abschnitt werden die benötigte Zeit und die Anzahl der Fehler gespeichert. Diese Werte können später von Patient/innen und Therapeut/innen analysiert werden. Anhand dieser Parameter kann eine Verbesserung oder Verschlechterung im Laufe der Therapie festgestellt werden. Der/Die Therapeut/in kann sich seine/ihre Patient/innen selbst zuweisen. Es bestehen keine Einschränkungen wie viele Behandelte gespeichert werden können. Therapeut/innen können nur die Statistiken der Patient/innen sehen, die sie behandeln. In den folgenden Absätzen werden die einzelnen Teilbereiche des Spiels näher erläutert. Der erste Abschnitt beschreibt das Planen des Tages.
+
+\subsubsection{Tagesplanung}\label{chap:day-planning}
+Dieser Teilbereich behandelt die Planung der Mahlzeiten für den Tag. Der/Die Patient/in kann aus einer Menge von Rezepten wählen, die einzelnen Tageszeiten (Frühstück, Mittagessen, Abendessen) zugeordnet werden müssen (siehe Abbildung \ref{fig:mockup-day-planning}). Neben den Rezepten sind noch einzelne Zutaten und zufällige Wörter aufgelistet. Die Essenszeiten müssen in die richtige Reihenfolge gebracht werden. Der/Die Spieler/in muss einzelne Mahlzeiten den Tageszeiten zuordnen, jedoch kann ein Feld maximal ein Element enthalten. Wenn ein Rezept nicht der korrekten Tageszeit entspricht, dann wird dies als Fehler gewertet und die Eingabe ist ungültig. Insgesamt muss nur ein Rezept pro Mahlzeit zugeordnet werden, um fortfahren zu können, allerdings kann in jedes Feld maximal eine Mahlzeit gezogen werden. Anschließend wird mit dem zweiten Abschnitt \textbf{\enquote{Rezept merken}} fortgefahren.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.6\linewidth]{figures/development/mockup/day-planning.png}
+	\caption{Erstes Mockup vom Abschnitt \enquote{Tagesplanung}. In der rechten Spalte sind die möglichen Mahlzeiten für die jeweiligen Tageszeiten. Links davon wird der unvollständige Tagesablauf des/der Patient/in angezeigt. Unten ist die Fehleranzahl und die aktuelle Zeit, sowie die daraus errechneten Punkte.}
+	\label{fig:mockup-day-planning}
+\end{figure}
+
+\subsubsection{Rezept merken}
+Aus den zuvor zugeordneten Rezepten wird nun eines zufällig ausgewählt. Die Zutaten dieser Mahlzeit muss sich der/die Patient/in genau einprägen (siehe Abbildung \ref{fig:mockup-remember-recipe}). Die Anzahl der Zutaten für ein Rezept schwankt je nach Schwierigkeitsgrad. Je mehr Zutaten eine Mahlzeit besitzt, desto schwieriger wird diese gewertet. Sobald die Behandelten glauben, sich das Rezept gemerkt zu haben, können sie mit dem nächsten Abschnitt fortfahren.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.6\linewidth]{figures/development/mockup/remember-recipe.png}
+	\caption{Erstes Mockup vom Abschnitt \enquote{Rezept merken}. Oben befinden sich die notwendigen Zutaten für das Rezept. In der Mitte wird der Hilfetext für diesen Abschnitt angezeigt. In der unteren Hälfte werden die Zeit, die Fehleranzahl und die daraus errechneten Punkte angezeigt.}
+	\label{fig:mockup-remember-recipe}
+\end{figure}
+
+\subsubsection{Einkaufsliste}
+In diesem Teilbereich muss der/die Patient/in eine Einkaufsliste zusammenstellen, die alle für das Rezept benötigen Zutaten enthält (siehe Abbildung \ref{fig:mockup-shopping-list}). Dazu muss sich der/die User/in die Bestandteile der vorigen Mahlzeit genauestens eingeprägt haben. Die Patient/innen müssen in den Kühlschrank schauen, bevor sie die Bestandteile in die Einkaufsliste ziehen (siehe Abbildung \ref{fig:mockup-refriderator}). Einige Komponenten des Rezepts können sich bereits im Kühlschrank befinden und müssen daher nicht eingekauft werden. Die vorhandenen Zutaten müssen von den Patient/innen beim Erstellen der Liste berücksichtigt werden. Eine Zutat, die sich bereits im Kühlschrank befindet, darf nicht auf die Einkaufsliste gesetzt werden. Wenn die Liste gültig ist, kann mit dem letzten Abschnitt fortgefahren werden.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.5\linewidth]{figures/development/mockup/shopping-list.png}
+	\caption{Erstes Mockup vom Abschnitt \enquote{Einkaufsliste}. Im obigen Bereich befindet sich der Hilfetext für dieses Spiel. In der Mitte des Bildschirms ist der Kühlschrank, danach die Einkaufsliste und zuletzt die möglichen Zutaten für die Einkaufsliste. Mit einem Klick auf den Kühlschrank öffnet sich dieser (siehe Abbildung \ref{fig:mockup-refriderator}). Unten werden die Zeit, die Fehleranzahl und die daraus errechneten Punkte angezeigt.}
+	\label{fig:mockup-shopping-list}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.5\linewidth]{figures/development/mockup/refriderator.png}
+	\caption{Erstes Mockup vom Kühlschrank im Abschnitt \enquote{Einkaufsliste}. In der Mitte werden die Zutaten angezeigt, die sich im Kühlschrank befinden. Mit einem Klick auf \enquote{Zurück}, wird zur Einkaufsliste zurückgekehrt (siehe Abbildung \ref{fig:mockup-refriderator}).}
+	\label{fig:mockup-refriderator}
+\end{figure}
+
+\subsubsection{Einkaufscenter}
+In diesem Abschnitt befindet sich der/die Spieler/in im Einkaufscenter und muss die Zutaten von der Einkaufsliste besorgen (siehe Abbildung \ref{fig:mockup-shopping-center}). Es existiert eine Vielzahl an Regalen, die unterschiedliche Nahrungsmittelkategorien beherbergen. Der/Die Patient/in muss wissen, in welchem Regal die benötigten Zutaten zu finden sind. Vom Regal aus, müssen die Bestandteile in den Einkaufswagen gezogen werden (siehe Abbildung \ref{fig:mockup-shopping-shelf}). Sobald alle Komponenten der Einkaufsliste im Einkaufswagen sind, kann das Spiel beendet werden. Wenn der Einkauf ungültig ist, wird dies als Fehler gewertet. Am Ende befindet sich der/die Spieler/in wieder im Hauptmenü und kann die Statistiken im Menü \textbf{\enquote{Statistiken}} betrachten.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.6\linewidth]{figures/development/mockup/shopping-center.png}
+	\caption{Erstes Mockup vom Abschnitt \enquote{Einkaufscenter}. Im oberen Bereich befindet sich der Hilfetext. Mittig sind die Regale des Einkaufscenters zu sehen. Mit einem Klick auf ein Regal, werden die Nahrungsmittel angezeigt (siehe Abbildung \ref{fig:mockup-shopping-shelf}). Rechts davon ist der Einkaufswagen. Unten werden die Zeit, die Fehleranzahl und die daraus errechneten Punkte angezeigt.}
+	\label{fig:mockup-shopping-center}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.5\linewidth]{figures/development/mockup/shopping-shelf.png}
+	\caption{Erstes Mockup von einem Regal im Abschnitt \enquote{Einkaufscenter}. In der Mitte befinden sich die Nahrungsmittel des Regals. Mit einem Klick auf \enquote{Weiter}, befindet sich der/die Spieler/in wieder in der Übersicht (siehe Abbildung \ref{fig:mockup-shopping-center}).}
+	\label{fig:mockup-shopping-shelf}
+\end{figure}
+
+\subsection{Weitere Ideen}
+Im Zuge der Planung und Konzeptionierung wurden noch weitere Ideen für mögliche Spiele ausgearbeitet. Es waren ein fünfter Abschnitt (Zubereitung) und weitere kleinere unabhängige Spiele (Minigames) geplant. Vollständigkeitshalber wird in diesem Subkapitel kurz auf die verworfenen Konzepte und die Ideen eingegangen. Der fünfte Abschnitt sollte direkt an den vierten Abschnitt (Einkaufscenter) anknüpfen und das Spiel weiterführen. Die Minigames hätten nicht sehr viel Umfang geboten und waren nur für einen kurzen Zeitvertreib abseits des Hauptspiels gedacht.
+
+\subsubsection{Fünfter Abschnitt: Zubereitung}
+Dieser Abschnitt sollte die Zubereitung der zuvor ausgewählten Mahlzeit abdecken (siehe Abbildung \ref{fig:mockup-preparation}). Für die Zubereitung existieren die Herdplatte, das Schneidebrett und der Backofen. Die Zutaten werden aus dem Kühlschrank genommen und auf das richtige Kochelement gezogen. Beispielsweise müssen beim Rührei, die Eier und das Öl auf der Herdplatte platziert werden. Nach einer festgelegten Zeit verwandeln sich die Zutaten in das fertige Gericht. Die Mahlzeit muss danach vom jeweiligen Kochelement entfernt werden. Wenn das Gericht nicht rechtzeitig entfernt wird, dann brennt es an. Nach dem Kochen befindet der/die Patient/in wieder im Hauptmenü.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.6\linewidth]{figures/development/mockup/preparation.png}
+	\caption{Mockup vom Abschnitt \enquote{Zubereitung}. In der oberen Hälfte befindet sich der Hilfetext. Mittig befinden sich die Kochelemente sowie der Kühlschrank. Oberhalb der Herdplatte befindet sich die Kochzeit. Unten werden die Zeit, die Fehleranzahl und die daraus errechneten Punkte angezeigt.}
+	\label{fig:mockup-preparation}
+\end{figure}
+
+\subsubsection{Minigame 1}
+Dieses Minigame soll die Aufmerksamkeit und die Konzentration des/der Patient/in trainieren. In der Mitte des Bildschirms wird eine Farbe als Text angezeigt (siehe Abbildung \ref{fig:minigame-1}). Der Name der Farbe stimmt allerdings nicht mit der Farbe des Textes überein. Unten muss die Farbe angeklickt werden, die der Text hat. Die Anforderung kann sich im Spielverlauf dynamisch ändern, sodass der Name der Farbe angeklickt werden muss. Während dem Spielen muss darauf geachtet werden, was gefordert wird, da sonst viele Fehler passieren. Wichtig für das Messen des Erfolgs ist die Geschwindigkeit, mit der der/die Patient/in das Spiel absolviert.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.6\linewidth]{figures/development/minigame/minigame-1.png}
+	\caption{Mockup des ersten Minigames.}
+	\label{fig:minigame-1}
+\end{figure}
+
+\subsubsection{Minigame 2}
+Im zweiten Minigame werden dem/der Patient/in mehrere Eigenschaften eines Gegenstands angezeigt (siehe Abbildung \ref{fig:minigame-2}). Zudem sind einige Bilder von unterschiedlichen Objekten zu sehen. Die Eigenschaften treffen auf einen dieser Gegenstände zu. Der/Die Spieler/in muss das passende Objekt aufgrund der Attribute wählen. Je nach Schwierigkeitsgrad werden mehr oder weniger Bilder/Gegenstände angezeigt. Das Spiel soll dem/der Patient/in helfen logische Zusammenhänge herzustellen.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.6\linewidth]{figures/development/minigame/minigame-2.png}
+	\caption{Mockup des zweiten Minigames.}
+	\label{fig:minigame-2}
+\end{figure}
+
+\subsubsection{Minigame 3}
+Das dritte Minigame ist eine Art Memory (siehe Abbildung \ref{fig:minigame-3}). Der/Die Spieler/in muss gleiche Bildpaare aufdecken. Das Spiel soll Aufmerksamkeit und Gedächtnis trainieren. Je nach Schwierigkeitsgrad gibt es mehr oder weniger Bildpaare. Der/Die Anwender/in muss sich genau merken, wo sich die Bilder befinden. Beim Spielen wird festgehalten wie schnell der/die Patient/in war und wie viele Fehler gemacht wurden.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.6\linewidth]{figures/development/minigame/minigame-3.png}
+	\caption{Mockup des dritten Minigames.}
+	\label{fig:minigame-3}
+\end{figure}
+
+\subsection{Statistik-Ansicht}
+Dieses Subkapitel beschreibt die verschiedenen Statistik-Ansichten der Patient/innen und Therapeut/innen. Jedes Spiel erzeugt statistische Daten, die nach dem Fertigstellen in dieser Ansicht betrachtet werden können. Grundsätzlich sind die Statistiken nach dem Spieltyp gruppiert und aufsteigend nach dem Datum sortiert (siehe Abbildung \ref{fig:mockup-statistics}). Der/Die Benutzer/in kann die Abschnitte zur besseren Übersicht ein- und ausklappen. Pro Eintrag wird das Datum, sowie die Zeit der Sitzung angezeigt. Darunter werden die benötigte Zeit, sowie die Anzahl der Fehler dargestellt. Während der/die Patient/in nur die eigenen Statistiken sieht, kann der/die Therapeut/in die Statistiken seiner/ihrer Behandelten ansehen (siehe Abbildung \ref{fig:mockup-statistics-therapists}). Daher werden in der Therapeut/innen-Ansicht die Statistiken nach dem/der Patient/in gruppiert. Die Daten der Behandelten können einzeln angezeigt werden und unterscheiden sich visuell nicht von der Patient/innen-Ansicht.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.5\linewidth]{figures/development/mockup/statistics.png}
+	\caption{Mockup der Patient/innen-Statistiken.}
+	\label{fig:mockup-statistics}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.5\linewidth]{figures/development/mockup/statistics-therapists.png}
+	\caption{Mockup der Statistik-Ansicht der Therapeut/innen.}
+	\label{fig:mockup-statistics-therapists}
+\end{figure}
+
+\section{Iteration 2: Entwicklung}\label{sec:iteration2}
+Um schnell einen lauffähigen Prototypen des Serious Games zu bekommen, fokussierte sich die Entwicklung der Applikation zu Beginn hauptsächlich auf die Kernfunktionen des Spiels. Das finale Aussehen der Anwendung unterscheidet sich in einigen Punkten von den zuvor erstellen Mockups. Dies ergibt sich aus der Tatsache, dass sich die Mockups auf der angestrebten Displaygröße nicht zufriedenstellend umsetzen ließen. Die Unterschiede werden im \autoref{chap:comparison} näher beschrieben. Während der Entwicklung wurde der Zwischenstand einigen Studierenden und Angestellten der TU Wien präsentiert, um Feedback einzuholen. Dabei gaben die Zuhörer/innen konstruktives Feedback, um die Anwendbarkeit zu verbessern. 
+
+\subsection{Vergleich}\label{chap:comparison}
+In diesem Abschnitt wird ein Vergleich zwischen den ursprünglichen Entwürfen und der prototypischen Umsetzung bei einigen Spielabschnitten in Iteration 2 gezogen. Während der Planung wurde das hochformatige Displayformat von mobilen Geräten nicht miteinbezogen. Daraus folgend waren die Bedienelemente zu schmal, um angemessen verwendet zu werden. Aus diesem Grund wurden die einzelnen Abschnitte untereinander angeordnet. Damit die Zutaten besser unterschieden werden können, wurden im Laufe der Entwicklung Bilder von Zutaten, anstatt der Namen verwendet. Bilder können einfacher als Texte unterschieden werden und sind deutlich einprägsamer für die Patient/innen. Bei den Rezepten wurden keine Aufnahmen verwendet, da sich diese je nach Zubereitung stark unterscheiden und nicht so eindeutig wie Zutatenbilder sind. Bilder lockern das Serious Game auf und wirken sich positiv auf den Spielspaß aus. Die Hilfstexte werden bei allen Spielabschnitten nicht mehr direkt eingeblendet, sondern wurden in einem aufklappbaren Popup untergebracht. Dadurch soll einerseits Platz gespart werden, damit nicht unnötig viel gescrollt werden muss. Andererseits brauchen erfahrene Spieler/innen diesen Text nicht mehr. Die Berechnung von Punkten wurde komplett entfernt. Diese Entscheidung wurde getroffen, da während des Spiels keinerlei Punkte oder Highscores gesammelt werden können, die zu einem Score aufaddiert werden könnten. Die Fehler und die benötige Zeit reichen aus, um eine Verbesserung der Patient/innen über einen gewissen Zeitraum feststellen zu können. Um Neueinsteiger/innen den Einstieg in Spiel zu erleichtern, wurde am Beginn eine Erklärung ins Spiel eingefügt. Darin wird der grobe Ablauf des Spiels erklärt, sowie dessen Ziele aufgeschlüsselt. Erfahrene Spieler/innen können diesen Dialog permanent ausblenden, um nicht dadurch aufgehalten zu werden.
+
+\subsubsection{Einkaufsliste}
+Wie in Abbildung \ref{fig:game-shopping-list} zu sehen ist, wurden die einzelnen Elemente untereinander angeordnet. Zutaten, die in den Mockups noch durch Texte dargestellt wurden, sind durch Bilder ersetzt worden. Der Kühlschrank wurde durch ein passendes Symbol ersetzt, damit dieser eindeutiger identifizierbar ist. Mit einem Klick auf dieses Symbol öffnet sich der Bildschirm (siehe Abbildung \ref{fig:game-cooler}). Der Hilfstext ist nun mit dem \enquote{?}-Button einsehbar.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.4\linewidth]{figures/development/application/shopping-list.png}
+	\caption{Prototyp des Spielabschnitts \enquote{Einkaufsliste}}
+	\label{fig:game-shopping-list}
+\end{figure}
+
+Beim Kühlschrank hat sich außer dem Umstand, dass nun Bilder anstatt Namen verwendet werden, nichts verändert, wie in Abbildung \ref{fig:game-cooler} zu sehen ist.
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.4\linewidth]{figures/development/application/refrigerator.png}
+	\caption{Prototyp des Spielabschnitts \enquote{Einkaufsliste} in der \enquote{Kühlschrank}-Ansicht}
+	\label{fig:game-cooler}
+\end{figure}
+
+\subsubsection{Einkaufscenter}
+Beim Einkaufscenter wurden viele Änderungen vorgenommen, die in Abbildung \ref{fig:game-shopping-center} ersichtlich sind. Die Bedienelemente wurden untereinander angeordnet, damit jedes Element die volle Breite ausschöpfen kann. Ursprünglich sollten die Regale nebeneinander angeordnet werden und den Stil von Supermarktregalen aus der Vogelperspektive widerspiegeln. Dieser Gedanke ließ sich nicht umsetzen, da es viele Regale gibt und der Bildschirm viel zu schmal ist, wenn diese nebeneinander angezeigt werden. Dadurch bleibt den Elementen zu wenig Platz, um ausreichend unterscheidbar zu sein. Daher wurde eine tabellarische Darstellung gewählt. Aufgrund des Feedbacks aus der Präsentation vor Studierenden und Angestellten der TU Wien, werden neben den Regalen nun einige Zutaten aus dieser Kategorie angezeigt. Das soll es den Spieler/innen erleichtern, die richtigen Komponenten schneller zu finden. Mit einem Klick auf ein Regal, öffnet sich dieses (siehe Abbildung \ref{fig:game-shopping-shelf}). Der Hilfstext ist nun mit dem \enquote{?}-Button einsehbar.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.5\linewidth]{figures/development/application/shopping-center.png}
+	\caption{Prototyp des Spielabschnitts \enquote{Einkaufscenter}}
+	\label{fig:game-shopping-center}
+\end{figure}
+
+Die Elemente der Ansicht wurden untereinander angeordnet, wie in Abbildung \ref{fig:game-shopping-shelf} zu sehen ist. Die Darstellung der Zutaten ist nicht mehr an ein echtes Regal angelehnt, sondern listet nur alle Zutaten nacheinander auf. Diese Entscheidung wurde aus Konsistenzgründen getroffen, damit die \enquote{Regal}-Ansicht im gleichen Stil, wie die anderen Ansichten gehalten wird, um Benutzer/innen die Bedienung zu erleichtern. Die Anzeige der Fehler und der Zeit wurde einerseits aus Platzgründen entfernt, andererseits ist die \enquote{Regal}-Ansicht nur ein Unterabschnitt des \enquote{Einkaufscenters}, weshalb die Anzeige redundant ist. Zutaten sind im Vergleich zum Mockup nur noch einmal vorhanden, da jedes Rezept nur aus einzelnen Komponenten besteht.
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.5\linewidth]{figures/development/application/shopping-shelf.png}
+	\caption{Prototyp des Spielabschnitts \enquote{Einkaufscenter} in der \enquote{Regal}-Ansicht}
+	\label{fig:game-shopping-shelf}
+\end{figure}
+
+\iffalse
+Diese Prototypen werden mit den Patient/innen und den Therapeut/innen evaluiert. Das Feedback der Behandelten fließt ebenso in die Verbesserung des Prototyps ein, wie die Meinung der Experten des medizinischen Personals. Den Patient/innen werden Fragebögen zur Testung der Akzeptanz ausgehändigt. Im Feedbackbogen finden sich Fragen, die sich auf die Benutzbarkeit, Verständlichkeit, Spaßfaktor \ac{usw.} der App beziehen. Wenn die Prototypen einen zufriedenstellenden Status erreicht haben, konzentriert sich die Programmierung auf eine ansprechende Präsentation der gesamten mobilen Applikation. Das Feedback von den Behandelten zur Bedienbarkeit der Anwendung ist besonders wichtig, da eine Person, die keine geistigen/körperlichen Einschränkungen hat, schwer ein passendes Interface entwerfen kann. Danach wird mit den Therapierenden ausgearbeitet, wie die gespeicherten Daten aufbereitet werden sollen, damit der Therapieerfolg leicht verständlich für beide Seiten dargestellt wird.
+\fi
+
+\iffalse
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.5\linewidth]{figures/development/application/day-planning.png}
+	\caption{Mockup der Statistik-Ansicht der Therapeut/innen.}
+	\label{fig:mockup-statistics-therapists}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+	\includegraphics[width=0.5\linewidth]{figures/development/application/remember-recipe.png}
+	\caption{Mockup der Statistik-Ansicht der Therapeut/innen.}
+	\label{fig:mockup-statistics-therapists}
+\end{figure}
+\fi
+
+\section{Iteration 3: Evaluierung}\label{sec:iteration3}
+Nachdem alle Anforderungen umgesetzt wurden, sollte das Konzept mit Patient/innen und Therapeut/innen evaluiert werden und entsprechendes Feedback in die Applikation eingearbeitet werden. Aufgrund dessen, dass die TU Wien keine Ethikkommission besitzt, erlaubte das LK Allentsteig keine direkte Interaktion mit Patient/innen. Dadurch sollte das Personal nach ihrer Meinung befragt werden. Durch COVID-19 konnte diese Befragung nicht vor Ort durchgeführt werden. Folgendermaßen wurde ein Online Fragebogen erstellt, der den Therapeut/innen übermittelt wurde. Um \textit{Plan your Day} besser einordnen zu können, wurden weitere Serious Games in den Fragebogen inkludiert. Der Fragebogen umfasst insgesamt 36 Fragen. Viele offene Fragen und einige wenige Multiple Choice Fragen. Die Ergebnisse des Fragebogens werden in diesem Kapitel evaluiert und diskutiert.
+
+In der Tabelle \ref{tab:serious-game-iteration-3} sind die Teilnehmer/innen der Befragung dargestellt. Das Alter der Therapeut/innen reicht von Mitte 20 bis Anfang 40. Alle Personen waren weiblich. Alle Befragten können bereits mehrere Jahre an Berufserfahrung vorweisen. Zu den Berufsgruppen der Therapeut/innen gehören Psychologie, klinische Psychologie und Ergotherapie.
+
+\begin{table}[H]
+    \centering
+    \begin{tabular}{|l|l|l|l|} 
+        \hline
+        \rowcolor[rgb]{0.851,0.851,0.851} \textbf{Beruf} & \rowcolor[rgb]{0.851,0.851,0.851} \textbf{Alter} & \rowcolor[rgb]{0.851,0.851,0.851} \textbf{Geschlecht} & \rowcolor[rgb]{0.851,0.851,0.851} \textbf{Berufsjahre} \\ 
+        \hline
+        Klinische Psychologie & 32 & weiblich & 6 \\ 
+        \hline
+        Psychologie & 42 & weiblich & 17 \\ 
+        \hline
+        Psychologie & 25 & weiblich & 2 \\ 
+        \hline
+        Ergotherapie & 28 & weiblich & 6 \\ 
+        \hline
+        \textbf{Durchschnitt} & \textbf{31,75} & - & \textbf{7,75} \\
+        \hline
+    \end{tabular}
+    \caption{Teilnehmer/innen Iteration 3}
+	\label{tab:serious-game-iteration-3}
+\end{table}
+
+% Gender of the therapists
+\iffalse
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \pie[pos={10,0}, sum=auto, radius=2, text=legend, color={cyan, red}]{/Männlich, 100/Weiblich}
+        \end{tikzpicture}
+        \caption{Geschlecht der Therapeut/innen}
+        \label{fig:therapeut-gender}
+    \end{figure}
+\fi
+
+% Work years of the therapists
+\iffalse
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \begin{axis}[
+                ybar, height=8cm, width=15.5cm,
+                enlargelimits=0.15,
+                legend style={at={(0.5,-0.15)},
+                  anchor=north,legend columns=-1},
+                ylabel={Berufsjahre},
+                ymin=0, ymax=2,
+                symbolic x coords={2, 6, 17},
+                xtick=data,
+                nodes near coords,
+                nodes near coords align={vertical},
+                ]
+            \addplot coordinates {
+                (2, 1) 
+                (6, 2) 
+                (17, 1)
+                };
+            \end{axis}
+        \end{tikzpicture}
+        \caption{Berufsjahre der Therapeut/innen}
+        \label{fig:therapists-work-years}
+    \end{figure}
+\fi
+
+% therapists-work-fields
+\iffalse
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \pie[pos={10,0}, sum=auto, radius=2, text=legend, color={orange, green, cyan, red}]{50/Psychologie, 25/Klinische Psychologie, 25/Ergotherapie, /Physiotherapie}
+        \end{tikzpicture}
+        \caption{Aufteilung der Therapeut/innen nach Berufsgruppe}
+        \label{fig:therapist-work-fields}
+    \end{figure}
+\fi
+   
+In der Abbildung \ref{fig:therapists-school-type} sind die Bildungsgrade der Therapeut/innen dargestellt. Zu den verschiedenen Ausbildungstypen gehört eine Fachhochschule, ein Hochschulstudium sowie ein Masterstudium der Psychologie.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ybar, height=8cm, width=15.5cm,
+            enlargelimits=0.15,
+            legend style={at={(0.5,-0.15)},
+              anchor=north,legend columns=-1},
+            ylabel={Anzahl Therapeut/innen},
+            ymin=0, ymax=2,
+            symbolic x coords={Fachhochschule, Hochschulstudium, Studium Psychologie Master},
+            xtick=data,
+            nodes near coords,
+            nodes near coords align={vertical},
+            ]
+        \addplot coordinates {
+            (Fachhochschule, 1) 
+            (Hochschulstudium, 2) 
+            (Studium Psychologie Master, 1)
+            };
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Bildungsgrade der Therapeut/innen}
+    \label{fig:therapists-school-type}
+\end{figure}
+
+Wie in Abbildung \ref{fig:therapeutic-patient-amount} zu sehen ist, betreuen alle Therapeut/innen zwischen 0 - 50 Patient/innen.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \pie[pos={10,0}, sum=auto, radius=2, text=legend, color={cyan, red, orange, green}]{100/0-50, /51-100, /101-150, /mehr als 150}
+    \end{tikzpicture}
+    \caption{Wie viele unterschiedliche Patient/innen werden pro Monat betreut?}
+    \label{fig:therapeutic-patient-amount}
+\end{figure}
+
+Ausnahmslos alle Teilnehmer/innen des Fragebogens setzen Serious Games zur Rehabilitation ein, wie in Abbildung \ref{fig:therapeutic-serious-games-used} zu sehen ist.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \pie[pos={10,0}, sum=auto, radius=2, text=legend, color={cyan, red}]{100/Ja, /Nein}
+    \end{tikzpicture}
+    \caption{Werden Serious Games zur Rehabiliation eingesetzt?}
+    \label{fig:therapeutic-serious-games-used}
+\end{figure}
+
+Beim Fragebogen mussten die Teilnehmer/innen angeben, welche Serious Games im LK Allentsteig eingesetzt werden. In Abbildung \ref{fig:therapists-used-serious-games} sind die verschiedenen Spiele dargestellt.  \textit{RehaCom} wird von allen Therapeut/innen verwendet. \textit{CogniPlus} und \textit{FreshMinder} werden von drei Befragten einsetzt. Das Schlusslicht bilden Armeo, Amadeo und MS Kognition, die nur von einer/m Therapeut/in verwendet werden.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ybar, height=8cm, width=15.5cm,
+            enlargelimits=0.15,
+            legend style={at={(0.5,-0.15)},
+              anchor=north,legend columns=-1},
+            ylabel={Anzahl Therapeut/innen},
+            ymin=0, ymax=4,
+            symbolic x coords={RehaCom, CogniPlus, FreshMinder, Armeo, Amadeo, MS Kognition},
+            xtick=data,
+            nodes near coords,
+            nodes near coords align={vertical},
+            ]
+        \addplot coordinates {
+            (RehaCom, 4) 
+            (CogniPlus, 3) 
+            (FreshMinder, 3)
+            (Armeo, 1)
+            (Amadeo, 1)
+            (MS Kognition, 1)
+            };
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Welche Serious Games verwenden Sie?}
+    \label{fig:therapists-used-serious-games}
+\end{figure}
+
+Danach wurde gefragt, welche Rückmeldung Therapeut/innen von Patient/in beim Einsatz von Serious Games erhalten. Serious Games werden grundsätzlich sehr positiv angenommen, da die Spiele motivierend wirken und die Patient/innen einen Alltagsbezug herstellen können. Allerdings empfinden manche Patient/innen Serious Games als unrealistisch oder nehmen die vorgegebene Reaktionszeit unterschiedlich war. Drei Therapeut/innen geben, dass junge Patient/innen besser auf den Einsatz von Spielen bei der Therapie reagieren. Personen, die sich ihrer kognitiven Schwächen bewusst sind, wollen auch mit Serious Games trainieren.
+
+In Abbildung \ref{fig:therapeutic-where-are-serious-games-used} ist zu sehen, dass 50\% der Patient/innen Serious Games in der Klinik sowohl als auch Zuhause verwenden. Allerdings werden keine Serious Games ausschließlich daheim verwendet.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \pie[pos={10,0}, sum=auto, radius=2, text=legend, color={cyan, orange, red}]{50/Beim Therapeuten vor Ort, 50/Beides, /Zu Hause}
+    \end{tikzpicture}
+    \caption{Wo verwenden Patient/innen Serious Games?}
+    \label{fig:therapeutic-where-are-serious-games-used}
+\end{figure}
+
+Um die entwickelte Applikation besser einordnen zu können, wurden weitere Serious Games in die Befragung miteinbezogen. Folgend werden die anderen Serious Games näher erläutert.
+
+\subsubsection{Re@@Ha inkl. RehaLabyrinth}
+Re@@Ha ist eine Plattform, welche den Therapeut/innen die Möglichkeit bietet, selbst Serious Games zusammenzustellen. Dadurch können die Spiele an die Patient/innen angepasst werden. Insgesamt sehen die Therapeut/innen diese Funktion positiv, allerdings ist es mit erhöhtem Zeitaufwand verbunden. Bemängelt werden fehlende Erklärungen und die Komplexität der Anwendung.
+
+\subsubsection{MyDailyRoutine}
+Dieses Spiel simuliert die Herausforderungen des Alltags und soll die exekutiven Fähigkeiten trainieren. Beispielsweise kann die Zubereitung des Mittagessens simuliert werden. Den Befragten gefällt das Konzept des Spiels besonders gut. Die Therapeut/innen geben an, dass das Spiel viele unterschiedliche neuropsychologische Funktionen trainiert. Des Weiteren wird angemerkt, dass exekutive Funktionen trainiert werden, welche nicht so viele Serious Games bieten. Bemängelt wird die kindliche Darstellung und daraus folgend eine Ablehnung von älteren Personen. Die Therapeut/innen wünschen sich die Implementierung von zusätzlichen Erklärungen und unterschiedliche Schwierigkeitsgrade.
+
+\subsubsection{FoxJump} 
+FoxJump ist ein Jump- \& Run-Spiel, welches mithilfe von Handbewegungen gesteuert wird. Im Spiel müssen Objekte eingesammelt werden. Dem/Der Spieler/in stellen sich Gegner in den Weg, denen der/die Patient/in ausweichen soll. Den Befragten gefällt das bunte Farbdesign und der spielerische Charakter des Serious Games. Zwei Personen konnten aufgrund des Videos nicht feststellen, was das genaue Ziel der Anwendung ist. Besonders bemängelt werden die fehlenden Erklärungen und ein veraltetes Design. Bei der Frage, welche Funktionen fehlen wurde angegeben, dass nicht das Gedächtnis oder exekutive Funktionen trainiert werden.
+
+\subsubsection{Reha@Stroke}
+Reha@Stroke setzt auf Smartphones und bietet unterschiedliche Interaktionsfunktionen, welche durch die diversen Sensoren und dem Touchscreen der mobilen Geräte ermöglicht werden. Den Therapeut/innen gefällt das einfache, intuitive Design besonders gut. Zudem werden die verschiedenen Schwierigkeitsstufen positiv hervorgehoben. Bemängelt wird die Abstinenz von Erklärungen und Beschriftungen. Als weiteren Kritikpunkt nennen die Therapeut/innen die englische Sprache, die viele Patient/innen nicht verstehen würden. Zudem wird angemerkt die Erforderlichkeit von motorischen Fähigkeiten. Die Therapeut/innen wünschen sich Reaktions- und Gedächtnisaufgaben. Aufgrund des Videos konnte eine Person die benötigte Hardware nicht feststellen.
+
+\subsubsection{Plan your Day}
+Diese Anwendung wurde im Verlauf dieser Arbeit erstellt. Das Prinzip des Spiels wird in Abschnitt \ref{sec:iteration1} und \ref{sec:iteration2} näher beschrieben. Den Teilnehmer/innen gefällt der einfache und übersichtliche Aufbau sehr gut. Zudem wird es als alltagsnah und anwendungsbezogen gelobt. Hervorgehoben wurde das Training von exekutiven Funktionen, dem Gedächtnis und der Aufmerksamkeit. Einem/r Teilnehmer/in gefielen die mehreren Planungsschritte. Eine Person bemängelte den Aufbau der Applikation. Verwirrung bei den Therapeut/innen gab es bezüglich der Einordnung von Rezepten zu den Tageszeiten. Teilnehmer/innen merkten an, dass nicht zu viele Aufgaben in die Applikation integriert werden sollen, da Patient/innen damit überfordert werden könnten. Bemängelt wurde das Fehlen eines Schwierigkeitsgrades.
+
+Wie in Abbildung \ref{fig:therapist-game-rating} zu sehen ist, werden die Spiele \textit{Plan your Day} und \textit{MyDailyRoutine} am Besten bewertet. Alle Therapeut/innen würden \textit{Plan your Day} in der Behandlung einsetzen oder zumindest in Betracht ziehen. \textit{MyDailyRoutine} würde von 50\% der Teilnehmer/innen eingesetzt werden. Dreiviertel der Befragten würde \textit{Re@@Ha} vielleicht in der Therapie einsetzen. Bei \textit{FoxJump} und \textit{Re@@Ha} denken 50\% nur über einen Einsatz nach. Die andere Hälfte würde diese beiden Serious Games nicht einsetzen.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \begin{axis}[
+            ybar, height=8cm, width=15.5cm,
+            enlargelimits=0.15,
+            legend style={at={(0.5,-0.15)},
+              anchor=north,legend columns=-1},
+            ylabel={Therapeut/innen},
+            ymin=0, ymax=3,
+            symbolic x coords={
+                RehaLabyrinth, 
+                My Daily Routine, 
+                FoxJump,
+                Reha@@Stroke,
+                Plan your Day
+            },
+            xtick=data,
+            nodes near coords,
+            nodes near coords align={vertical},
+            ]
+        \addplot coordinates {
+            (RehaLabyrinth, 0) 
+            (My Daily Routine, 2) 
+            (FoxJump, 0)
+            (Reha@@Stroke, 0)
+            (Plan your Day, 2)
+            };
+        \addplot coordinates {
+            (RehaLabyrinth, 3) 
+            (My Daily Routine, 0) 
+            (FoxJump, 2)
+            (Reha@@Stroke, 2)
+            (Plan your Day, 2)
+            };
+        \addplot coordinates {
+            (RehaLabyrinth, 1) 
+            (My Daily Routine, 2) 
+            (FoxJump, 2)
+            (Reha@@Stroke, 2)
+            (Plan your Day, 0)
+            };
+        \legend{Würde ich nutzen,Würde ich vielleicht nutzen,Würde ich nicht nutzen}
+        \end{axis}
+    \end{tikzpicture}
+    \caption{Bewertung der Serious Games durch Therapeut/innen}
+    \label{fig:therapist-game-rating}
+\end{figure}
+
+Wie in Abbildung \ref{fig:therapeutic-individual-levels} zu erkennen ist, würden 50\% der Therapeut/innen Serious Games individuell bearbeiten wollen. Kein/e Befragte/r würde das Anpassen von Spielinhalten ablehnen.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \pie[pos={10,0}, sum=auto, radius=2, text=legend, color={cyan, red, orange}]{50/Ja, /Nein, 50/Vielleicht}
+    \end{tikzpicture}
+    \caption{Würden Sie einzelne Spiellevel individuell selber für den Patienten konfigurieren wollen?}
+    \label{fig:therapeutic-individual-levels}
+\end{figure}
+
+Die Therapeut/in wollen die Ergebnisse der einzelnen Spielleveln einsehen können, wie in Abbildung \ref{fig:therapeutic-view-results} zu sehen ist. Damit kann der Spielfortschritt von Patient/innen besser beobachtet werden. Aufgrund dieser Daten können die Level schwieriger oder einfacher durch den/die Therapeut/in gestaltet werden.
+
+\begin{figure}[H]
+    \centering
+    \begin{tikzpicture}
+        \pie[pos={10,0}, sum=auto, radius=2, text=legend, color={cyan, red}]{100/Ja, /Nein}
+    \end{tikzpicture}
+    \caption{Würden Sie Ergebnisse von einzelnen Spiellevel ansehen?}
+    \label{fig:therapeutic-view-results}
+\end{figure}
+
+\iffalse
+    \begin{figure}[H]
+        \centering
+        \begin{tikzpicture}
+            \pie[pos={10,0}, sum=auto, radius=2, text=legend, color={cyan, red, orange}]{100/Ja, /Nein, /Vielleicht}
+        \end{tikzpicture}
+        \caption{Würden Sie einzelne Spiellevel auf Basis der Ergebnisse adaptieren?}
+        \label{fig:therapeutic-adapt-levels}
+    \end{figure}
+\fi
+
+\iffalse
+Am Ende des Fragebogens wurde den Therapeut/innen ein exemplarischer Workflow zur Erstellung von Spielleveln vorgeschlagen. Die Teilnehmer/innen sollten ihre persönliche Meinung äußern und wie gut dieses Konzept in der Therapie angewendet werden kann. In Abbildung \ref{fig:therapeutic-workflow} ist dieser Ablauf dargestellt. Zuerst erstellt oder adaptiert der/die Therapeut/in das Level. Danach wird das Level dem/der gewünschten Patient/in zugewiesen. Der/Die Patient/in spielt daraufhin das Level und Ende werden die Ergebnisse an den/die Therapeut/in übertragen. Die Therapeut/innen gaben an, dass ihrer Meinung nach dieser Workflow bei stationären Patient/innen Wirkung zeigen würde. Jedoch müssen die Ergebnisse der Spielsitzungen nicht sofort übermittelt werden.
+
+\begin{center}
+    \smartdiagram[circular diagram:clockwise]{Level/Übung wird von Therapeut/in erstellt/adaptiert, Level/Übung wird von Therapeut/in an Patient/in zugewiesen, Patient/in spielt Spiel, Ergebnisse werden an Therapeut/in übermittelt}
+    \captionof{figure}{Workflow zur Erstellung von Levels durch Therapeut/innen}\label{fig:therapeutic-workflow}
+\end{center}
+\fi
+
+\input{chapters/usability/usability}
+\input{chapters/architecture}
+
+
+

@@ -1,0 +1,79 @@
+\documentclass [bachelor,german,a4paper,11pt,oneside,webreferences,glossary,indextop,listoflistings,listofalgorithms,acronyms]{INSOthesis}
+% change encoding in the document
+%\inputencoding{utf8} % default
+%\inputencoding{latin1} % for windows
+
+\usepackage{makecell}
+\usepackage{fourier} 
+\usepackage{array}
+\usepackage{pgf-pie}
+\usepackage{verbatim}
+\usepackage{pgfplots}
+\usepackage{smartdiagram}
+
+\thesistitle{Analyse, Konzeption und prototypische Entwicklung eines Serious Games für Schlaganfallpatient/innen}
+%\thesisshorttitle{Shorttitle of the Thesis}
+%\thesissubtitle{Optional Subtitle} % optional
+\thesisdate{\today}
+
+% all titles and designations have to be gender-related!
+%\thesistype{Diplomarbeit}{Master's Thesis}
+%\thesisdegree{Diplom-Ingenieurin}{Diplom-Ingenieurin}
+\thesiscurriculum{Software Engineering und Information Engineering}{Software Engineering and Information Engineering} % your study
+\thesisauthor{Florian Mold} % your name
+\thesisauthoraddress{Leitermayergasse 31/12, 1180 Wien} % your address
+\thesismatrikelno{11776836} % your registration number
+
+% advisor
+%\thesisauthorpreamble {Verfasser}
+%\thesisadvisorpreamble {Betreuung}
+%\thesisadvisorone {Thomas Grechenig}
+% \thesisadvisortwo {Vorname Nachname}
+%\thesisadvisorthree {Vorname Nachname}
+
+% Bibliographie file
+\bibliography{bibliography/references}
+
+\hypersetup{
+  %colorlinks=false % enable and disable frames arround links
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Can be used to add additional informations
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% \AfterTitlePages{}
+% \AfterDeclaration{}
+% \AfterAcknowledgements{}
+% \AfterAbstract{}
+% \AfterListOfFigures{}
+% \AfterListOfTables{}
+% \AfterAbbreviations{}
+% \AfterBibliography{}
+
+\renewcommand\afterchapternum{\hspace{1em}}
+\begin{document}
+
+\maketitle
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%   CONTENTS    %%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\input{chapters/introduction}
+\input{chapters/theoretic/theoretic}
+\input{chapters/state_of_the_art/state_of_the_art}
+\input{chapters/results}
+%\input{chapters/discussion}
+\input{chapters/conclusion}
+
+% insert bibliography and such stuff
+\BackMatter
+
+\cleardoublepage
+\appendix
+
+\input{chapters/appendix}
+
+\end{document}
